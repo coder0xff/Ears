@@ -63,29 +63,38 @@
 #define COMPARE_MATCH_OUTPUT_B_MODE_2(PRESCANED_WGM_MODE, Mode) COMPARE_MATCH_OUTPUT_B_MODE_3(_COM_EFFECT_##PRESCANED_WGM_MODE, Mode)
 #define COMPARE_MATCH_OUTPUT_B_MODE(WGM_MODE, Mode) COMPARE_MATCH_OUTPUT_B_MODE_2(WGM_MODE, Mode)
 
-struct _8_bit_timer_counter_control_register_A {
+#define CLOCK_SELECT_8_BIT_NO_CLOCK 0
+#define CLOCK_SELECT_8_BIT_INTERNAL_OVER_1 1
+#define CLOCK_SELECT_8_BIT_INTERNAL_OVER_8 2
+#define CLOCK_SELECT_8_BIT_INTERNAL_OVER_64 3
+#define CLOCK_SELECT_8_BIT_INTERNAL_OVER_256 4
+#define CLOCK_SELECT_8_BIT_INTERNAL_OVER_1024 5
+#define CLOCK_SELECT_8_BIT_EXTERNAL_FALLING_EDGE 6
+#define CLOCK_SELECT_8_BIT_EXTERNAL_RISING_EDGE 7
+
+struct _8_bit_timer_counter_control_register_a {
     unsigned char waveform_generation_mode_00_01 : 2;
     unsigned char reserved : 2;
-    unsigned char compare_match_output_B_mode : 2;
-    unsigned char compare_match_output_A_mode : 2;
+    unsigned char compare_match_output_b_mode : 2;
+    unsigned char compare_match_output_a_mode : 2;
 };
 
-struct _8_bit_timer_counter_control_register_B {
+struct _8_bit_timer_counter_control_register_b {
     unsigned char clock_select : 3;
     unsigned char waveform_generation_mode_02 : 1;
     unsigned char reserved : 2;
-    unsigned char force_output_compare_A : 1;
-    unsigned char force_output_compare_B : 1;
+    unsigned char force_output_compare_a : 1;
+    unsigned char force_output_compare_b : 1;
 };
 
-void get_8_bit_timer_counter_control_registers(int timer, _8_bit_timer_counter_control_register_A* A, _8_bit_timer_counter_control_register_B* B) {
+void get_8_bit_timer_counter_control_registers(int timer, _8_bit_timer_counter_control_register_a* a, _8_bit_timer_counter_control_register_b* b) {
     switch (timer) {
     case 0:
-        *(char *)A = TCCR0A;
-        *(char *)B = TCCR0B;
+        *(char *)a = TCCR0A;
+        *(char *)b = TCCR0B;
     case 2:
-        *(char *)A = TCCR2A;
-        *(char *)B = TCCR2B;
+        *(char *)a = TCCR2A;
+        *(char *)b = TCCR2B;
     default:
         exit(EXIT_FAILURE);
     }
@@ -94,11 +103,11 @@ void get_8_bit_timer_counter_control_registers(int timer, _8_bit_timer_counter_c
 void set_8_bit_timer_counter_control_registers(int timer, _8_bit_timer_counter_control_register_A A, _8_bit_timer_counter_control_register_B B) {
     switch (timer) {
     case 0:
-        TCCR0A = *(char *)&A;
-        TCCR0B = *(char *)&B;
+        TCCR0A = *(char *)&a;
+        TCCR0B = *(char *)&b;
     case 2:
-        TCCR2A = *(char *)&A;
-        TCCR2B = *(char *)&B;
+        TCCR2A = *(char *)&a;
+        TCCR2B = *(char *)&b;
     default:
         exit(EXIT_FAILURE);
     }
@@ -139,9 +148,21 @@ void set_timer_counter_wave_generation_mode(int timer, unsigned char mode) {
     }
 }
 
-void
-void force_output_compare(int) {
+//see ref 1 pg 109
+void force_output_compare_a(int timer) {
+    _8_bit_timer_counter_control_register_a a;
+    _8_bit_timer_counter_control_register_a b;
+    get_8_bit_timer_counter_control_registers(timer, &a, &b);
+    b.force_output_compare_a = 1;
+    set_8_bit_timer_counter_control_registers(timer, &a, &b);
+}
 
+void force_output_compare_a(int timer) {
+    _8_bit_timer_counter_control_register_a a;
+    _8_bit_timer_counter_control_register_a b;
+    get_8_bit_timer_counter_control_registers(timer, &a, &b);
+    b.force_output_compare_b = 1;
+    set_8_bit_timer_counter_control_registers(timer, &a, &b);
 }
 
 void stop_timer_0() {
