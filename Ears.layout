@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
-	<ActiveTarget name="Simulator - Debug" />
+	<ActiveTarget name="Arduino Pro Mini (328)" />
 	<File name="Ears.ino" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2098" topLine="51" />
+			<Cursor1 position="6079" topLine="147" />
 		</Cursor>
 	</File>
-	<File name="8_bit_timers.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="8_bit_timers.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="8687" topLine="0" />
 		</Cursor>

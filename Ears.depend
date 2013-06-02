@@ -39,7 +39,7 @@
 1231623166 c:\users\brent\desktop\codeblocks\ardusim\arduino\cores\stdint.h
 	<stddef.h>
 
-1333280461 c:\users\brent\desktop\codeblocks\ardusim\include\avr\pgmspace.h
+1333284061 c:\users\brent\desktop\codeblocks\ardusim\include\avr\pgmspace.h
 	<avr/io.h>
 	<avr/pgmspace.h>
 	<inttypes.h>
@@ -239,7 +239,7 @@
 	<avr/io.h>
 	<avr/io.h>
 
-1337182953 c:\users\brent\desktop\codeblocks\ardusim\include\avr\interrupt.h
+1337186553 c:\users\brent\desktop\codeblocks\ardusim\include\avr\interrupt.h
 	<avr/io.h>
 
 1322483532 c:\users\brent\desktop\codeblocks\ardusim\arduino\cores\binary.h
@@ -276,7 +276,7 @@
 1361432899 c:\users\brent\desktop\codeblocks\ardusim\arduino\cores\new.h
 	<stdlib.h>
 
-1338888484 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\ctb.h
+1338892084 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\ctb.h
 	"ctb-0.16/fifo.h"
 	"ctb-0.16/gpib.h"
 	"ctb-0.16/getopt.h"
@@ -287,54 +287,54 @@
 	"ctb-0.16/serportx.h"
 	"ctb-0.16/timer.h"
 
-1338888484 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\fifo.h
+1338892084 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\fifo.h
 	<sys/types.h>
 
-1338888484 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\gpib.h
+1338892084 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\gpib.h
 	"ctb-0.16/iobase.h"
 
-1338888484 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\iobase.h
+1338892084 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\iobase.h
 	"ctb-0.16/fifo.h"
 	<sys/types.h>
 
-1338888484 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\getopt.h
+1338892084 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\getopt.h
 	"win32/getopt.h"
 	<getopt.h>
 
-1338888484 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\win32\getopt.h
+1338892084 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\win32\getopt.h
 
-1338888484 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\kbhit.h
+1338892084 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\kbhit.h
 
-1338888484 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\portscan.h
+1338892084 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\portscan.h
 	<string>
 	<vector>
 
-1338888484 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\serport.h
+1338892084 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\serport.h
 	"ctb-0.16/win32/serport.h"
 	"ctb-0.16/linux/serport.h"
 
-1338888484 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\win32\serport.h
+1338892084 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\win32\serport.h
 	"../serportx.h"
 	<windows.h>
 
-1338888484 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\serportx.h
+1338892084 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\serportx.h
 	<stdio.h>
 	<string.h>
 	"ctb-0.16/iobase.h"
 
-1338888484 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\linux\serport.h
+1338892084 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\linux\serport.h
 	"ctb-0.16/serportx.h"
 	<linux/serial.h>
 	<termios.h>
 
-1338888484 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\timer.h
+1338892084 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\timer.h
 	"win32/timer.h"
 	"linux/timer.h"
 
-1338888484 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\win32\timer.h
+1338892084 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\win32\timer.h
 	<windows.h>
 
-1338888484 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\linux\timer.h
+1338892084 c:\users\brent\desktop\codeblocks\ardusim\include\ctb-0.16\linux\timer.h
 	<pthread.h>
 
 1355118634 c:\users\brent\desktop\codeblocks\ardusim\arduino\cores\usbapi.h
@@ -344,4 +344,57 @@
 	<avr/pgmspace.h>
 
 1369019999 c:\users\brent\documents\arduino\ears\hardwaretimers.h
+
+1370214967 source:c:\users\brent\documents\github\ears\ears.ino
+	<Arduino.h>
+
+1362990550 c:\users\brent\desktop\codeblocks\arduino\hardware\arduino\cores\arduino\arduino.h
+	<stdlib.h>
+	<string.h>
+	<math.h>
+	<avr/pgmspace.h>
+	<avr/io.h>
+	<avr/interrupt.h>
+	"binary.h"
+	"WCharacter.h"
+	"WString.h"
+	"HardwareSerial.h"
+	"pins_arduino.h"
+
+1362990550 c:\users\brent\desktop\codeblocks\arduino\hardware\arduino\cores\arduino\binary.h
+
+1362990550 c:\users\brent\desktop\codeblocks\arduino\hardware\arduino\cores\arduino\wcharacter.h
+	<ctype.h>
+
+1362990550 c:\users\brent\desktop\codeblocks\arduino\hardware\arduino\cores\arduino\wstring.h
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<avr/pgmspace.h>
+
+1362990550 c:\users\brent\desktop\codeblocks\arduino\hardware\arduino\cores\arduino\hardwareserial.h
+	<inttypes.h>
+	"Stream.h"
+	"USBAPI.h"
+
+1362990550 c:\users\brent\desktop\codeblocks\arduino\hardware\arduino\cores\arduino\stream.h
+	<inttypes.h>
+	"Print.h"
+
+1362990550 c:\users\brent\desktop\codeblocks\arduino\hardware\arduino\cores\arduino\print.h
+	<inttypes.h>
+	<stdio.h>
+	"WString.h"
+	"Printable.h"
+
+1362990550 c:\users\brent\desktop\codeblocks\arduino\hardware\arduino\cores\arduino\printable.h
+	<new.h>
+
+1362990550 c:\users\brent\desktop\codeblocks\arduino\hardware\arduino\cores\arduino\new.h
+	<stdlib.h>
+
+1362990550 c:\users\brent\desktop\codeblocks\arduino\hardware\arduino\cores\arduino\usbapi.h
+
+1362990550 c:\users\brent\desktop\codeblocks\arduino\hardware\arduino\variants\standard\pins_arduino.h
+	<avr/pgmspace.h>
 

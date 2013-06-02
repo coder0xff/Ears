@@ -22,17 +22,6 @@ enum ear {
     RIGHT_EAR
 };
 
-void setup()
-{
-    pinMode(AUTO_MODE_PIN, INPUT);
-    pinMode(MANUAL_DOWN_PIN, INPUT);
-    pinMode(MANUAL_TWITCH_PIN, INPUT);
-    pinMode(LEFT_MOTOR_ENABLE_PIN, OUTPUT);
-    pinMode(LEFT_MOTOR_STOP_PIN, INPUT);
-    pinMode(RIGHT_MOTOR_ENABLE_PIN, OUTPUT);
-    pinMode(RIGHT_MOTOR_STOP_PIN, OUTPUT);
-}
-
 void set_ear_velocity(ear e, char velocity) {
     unsigned char const dutyCycleMin = 200;
     unsigned char const negDir = (unsigned char)velocity >> 7;
@@ -162,6 +151,18 @@ void ear_twitch_sequence() {
     set_ear_velocity(e, 127);
     delay(250);
     orient_ears(true);
+}
+
+void setup()
+{
+    pinMode(AUTO_MODE_PIN, INPUT);
+    pinMode(MANUAL_DOWN_PIN, INPUT);
+    pinMode(MANUAL_TWITCH_PIN, INPUT);
+    pinMode(LEFT_MOTOR_ENABLE_PIN, OUTPUT);
+    pinMode(LEFT_MOTOR_STOP_PIN, INPUT);
+    pinMode(RIGHT_MOTOR_ENABLE_PIN, OUTPUT);
+    pinMode(RIGHT_MOTOR_STOP_PIN, OUTPUT);
+    orient_ears(false);
 }
 
 void loop()
