@@ -1,4 +1,4 @@
-/* interface for managing the hardware timers for ATmega168, or ATmega328 */
+/* code for low-level management of the 8-bit hardware timers for ATmega168, or ATmega328 */
 
 #include <iom328p.h>
 
@@ -87,7 +87,7 @@ struct _8_bit_timer_counter_control_register_b {
     unsigned char force_output_compare_b : 1;
 };
 
-void get_8_bit_timer_counter_control_registers(int timer, _8_bit_timer_counter_control_register_a* a, _8_bit_timer_counter_control_register_b* b) {
+inline void get_8_bit_timer_counter_control_registers(int timer, _8_bit_timer_counter_control_register_a* a, _8_bit_timer_counter_control_register_b* b) {
     switch (timer) {
     case 0:
         *(char *)a = TCCR0A;
@@ -100,7 +100,7 @@ void get_8_bit_timer_counter_control_registers(int timer, _8_bit_timer_counter_c
     }
 }
 
-void set_8_bit_timer_counter_control_registers(int timer, _8_bit_timer_counter_control_register_A A, _8_bit_timer_counter_control_register_B B) {
+inline void set_8_bit_timer_counter_control_registers(int timer, _8_bit_timer_counter_control_register_A A, _8_bit_timer_counter_control_register_B B) {
     switch (timer) {
     case 0:
         TCCR0A = *(char *)&a;
@@ -113,43 +113,57 @@ void set_8_bit_timer_counter_control_registers(int timer, _8_bit_timer_counter_c
     }
 }
 
-unsigned char get_timer_counter_wave_generation_mode(int timer) {
-    switch (timer) {
-    case 0:
-    case 2:
-        _8_bit_timer_counter_control_register_A A8;
-        _8_bit_timer_counter_control_register_B B8;
-        get_8_bit_timer_counter_control_registers(timer, &A8, &B8);
-        return B8.waveform_generation_mode_02 << 2 | A8.waveform_generation_mode_00_01;
-    case 1:
-        return 0; //todo
-    default:
-        exit(EXIT_FAILURE);
-    }
+//ref 1 pg 108 table 14-8
+inline unsigned char get_8_bit_timer_counter_wave_generation_mode(int timer) {
+    _8_bit_timer_counter_control_register_A A8;
+    _8_bit_timer_counter_control_register_B B8;
+    get_8_bit_timer_counter_control_registers(timer, &A8, &B8);
+    return B8.waveform_generation_mode_02 << 2 | A8.waveform_generation_mode_00_01;
 }
 
-void set_timer_counter_wave_generation_mode(int timer, unsigned char mode) {
-    if (mode > 7) {
-        exit(EXIT_FAILURE);
-    }
-    switch (timer) {
-    case 0:
-    case 2:
-        _8_bit_timer_counter_control_register_A A8;
-        _8_bit_timer_counter_control_register_B B8;
-        get_8_bit_timer_counter_control_registers(timer, &A8, &B8);
-        A8.waveform_generation_mode_00_01 = mode & 3;
-        B8.waveform_generation_mode_02 = mode >> 2;
-        set_8_bit_timer_counter_control_registers(timer, A8, B8);
-    case 1:
-        return 0; //todo
-    default:
-        exit(EXIT_FAILURE);
-    }
+//ref 1 pg 108 table 14-8
+inline void set_8_bit_timer_counter_wave_generation_mode(int timer, unsigned char mode) {
+    _8_bit_timer_counter_control_register_A A8;
+    _8_bit_timer_counter_control_register_B B8;
+    get_8_bit_timer_counter_control_registers(timer, &A8, &B8);
+    A8.waveform_generation_mode_00_01 = mode & 3;
+    B8.waveform_generation_mode_02 = mode >> 2;
+    set_8_bit_timer_counter_control_registers(timer, A8, B8);
+}
+
+//see ref 1 pg 106-108 tables 14-2 thru 14-7
+inline unsigned char get_8_bit_timer_counter_output_compare_mode_a(int timer, unsigned char mode) {
+    _8_bit_timer_counter_control_register_a a;
+    _8_bit_timer_counter_control_register_a b;
+    get_8_bit_timer_counter_control_registers(timer, &a, &b);
+    return a.compare_match_output_a_mode;
+}
+
+inline unsigned char set_8_bit_timer_counter_output_compare_mode_a(int timer, unsigned char mode) {
+    _8_bit_timer_counter_control_register_a a;
+    _8_bit_timer_counter_control_register_a b;
+    get_8_bit_timer_counter_control_registers(timer, &a, &b);
+    a.compare_match_output_a_mode = mode;
+    set_8_bit_timer_counter_control_registers(timer, &a, &b);
+}
+
+inline unsigned char get_8_bit_timer_counter_output_compare_mode_b(int timer, unsigned char mode) {
+    _8_bit_timer_counter_control_register_a a;
+    _8_bit_timer_counter_control_register_a b;
+    get_8_bit_timer_counter_control_registers(timer, &a, &b);
+    return a.compare_match_output_b_mode;
+}
+
+inline unsigned char set_8_bit_timer_counter_output_compare_mode_b(int timer, unsigned char mode) {
+    _8_bit_timer_counter_control_register_a a;
+    _8_bit_timer_counter_control_register_a b;
+    get_8_bit_timer_counter_control_registers(timer, &a, &b);
+    a.compare_match_output_b_mode = mode;
+    set_8_bit_timer_counter_control_registers(timer, &a, &b);
 }
 
 //see ref 1 pg 109
-void force_output_compare_a(int timer) {
+inline void strobe_8_bit_timer_counter_force_output_compare_a(int timer) {
     _8_bit_timer_counter_control_register_a a;
     _8_bit_timer_counter_control_register_a b;
     get_8_bit_timer_counter_control_registers(timer, &a, &b);
@@ -157,7 +171,7 @@ void force_output_compare_a(int timer) {
     set_8_bit_timer_counter_control_registers(timer, &a, &b);
 }
 
-void force_output_compare_a(int timer) {
+inline void strobe_8_bit_timer_counter_force_output_compare_b(int timer) {
     _8_bit_timer_counter_control_register_a a;
     _8_bit_timer_counter_control_register_a b;
     get_8_bit_timer_counter_control_registers(timer, &a, &b);
@@ -165,8 +179,35 @@ void force_output_compare_a(int timer) {
     set_8_bit_timer_counter_control_registers(timer, &a, &b);
 }
 
-void stop_timer_0() {
+inline unsigned char get_8_bit_timer_counter_clock_select(int timer, unsigned char clock_select) {
+    _8_bit_timer_counter_control_register_a a;
+    _8_bit_timer_counter_control_register_a b;
+    _8_bit_timer_counter_control_register_a b;
+    get_8_bit_timer_counter_control_registers(timer, &a, &b);
+    b.clock_select = clock_select;
+    set_8_bit_timer_counter_control_registers(timer, &a, &b);
+}
 
+inline unsigned char get_8_bit_timer_counter_register(int timer) {
+    switch (timer) {
+    case 0:
+        return TCNT0;
+    case 2:
+        return TCNT2;
+    default:
+        exit(EXIT_FAILURE);
+    }
+}
+
+inline void set_8_bit_timer_counter_register(int timer, unsigned char value) {
+    switch (timer) {
+    case 0:
+        TCNT0 = value;
+    case 2:
+        TCNT2 = value;
+    default:
+        exit(EXIT_FAILURE);
+    }
 }
 
 /* References

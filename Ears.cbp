@@ -25,7 +25,7 @@
 					<Add option="-lardusim" />
 				</Linker>
 				<Environment>
-					<Variable name="ARDUINO_DIR" value="$(APP_PATH)/ardusim" />
+					<Variable name="ARDUINO_DIR" value="$(APP_PATH)\ardusim" />
 				</Environment>
 			</Target>
 			<Target title="Simulator - Release">
@@ -48,7 +48,7 @@
 					<Add option="-lardusim" />
 				</Linker>
 				<Environment>
-					<Variable name="ARDUINO_DIR" value="$(APP_PATH)/ardusim" />
+					<Variable name="ARDUINO_DIR" value="$(APP_PATH)\ardusim" />
 				</Environment>
 			</Target>
 			<Target title="Arduino Uno">
@@ -555,7 +555,7 @@
 					<Add after='cmd /c &quot;avr-objdump -h -S $(TARGET_OUTPUT_FILE) &gt; $(TARGET_OUTPUT_FILE).lss&quot;' />
 				</ExtraCommands>
 				<Environment>
-					<Variable name="BOARD" value="Arduino Mega 2560/ADK" />
+					<Variable name="BOARD" value="Arduino Mega 2560\ADK" />
 					<Variable name="BOARD_ID" value="mega2560" />
 					<Variable name="MCU" value="atmega2560" />
 					<Variable name="MCU_CLOCK" value="8" />
@@ -683,11 +683,7 @@
 		<Compiler>
 			<Add directory="." />
 		</Compiler>
-		<Unit filename="Ears.ino">
-			<Option compile="1" />
-			<Option link="1" />
-		</Unit>
-		<Unit filename="HardwareTimers.h">
+		<Unit filename="8_bit_timers.h">
 			<Option target="Simulator - Debug" />
 			<Option target="Simulator - Release" />
 			<Option target="Arduino Uno" />
@@ -704,6 +700,10 @@
 			<Option target="Arduino Pro Mini (168)" />
 			<Option target="Arduino Mega 2560/ADK" />
 			<Option target="Arduino Mega 1280" />
+		</Unit>
+		<Unit filename="Ears.ino">
+			<Option compile="1" />
+			<Option link="1" />
 		</Unit>
 		<Extensions>
 			<code_completion />
