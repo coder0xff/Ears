@@ -19,4 +19,4 @@
 /obj
 /build
 *.depend
-/*.layout
+*.layout
